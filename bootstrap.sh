@@ -15,6 +15,11 @@ sudo mv /etc/default/grub /etc/default/grub.org
 sudo wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/kimthostrup/bootstrap/main/grub -P /etc/default/
 sudo update-grub
 
+sudo rm -rf /etc/update-motd.d/95-hwe-eol
+sudo rm -rf /etc/update-motd.d/88-esm-announce
+sudo rm -rf /etc/update-motd.d/91-contract-ua-esm-status
+sudo rm -rf /etc/update-motd.d/91-release-upgrade
+sudo rm -rf /etc/update-motd.d/50-motd-news
 
 echo "Changing networking files"
 sudo rm /etc/network/interfaces
