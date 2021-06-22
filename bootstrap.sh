@@ -12,5 +12,5 @@ sudo apt install ifupdown net-tools
 sudo mv /etc/default/grub /etc/default/grub.org
 sudo wget --no-check-certificate --content-disposition https://gist.githubusercontent.com/kimthostrup/900cdfec4c45932bb3270242904b2e9d/raw/b61dd82a84759a2462113a258f2a7a4a2fc51c49/grub -P /etc/default/
 sudo update-grub
-
+sudo shutdown -r now
 echo "Rebooting....."
