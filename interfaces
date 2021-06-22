@@ -1,0 +1,20 @@
+#source /etc/network/interfaces.d/*
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+allow-hotplug eth0
+auto eth0
+iface eth0 inet static
+	address 192.168.55.200
+	netmask 255.255.255.0
+	gateway 192.168.55.1
+	dns-nameservers 8.8.8.8
+
+allow-hotplug eth1
+auto eth1
+iface eth1 inet dhcp
+
+allow-hotplug eth2
+auto eth2
+iface eth2 inet dhcp
