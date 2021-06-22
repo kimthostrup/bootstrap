@@ -1,5 +1,7 @@
 #!/bin/bash
 
+MOTD_LOC=/etc/motd
+
 sudo apt update
 sudo apt upgrade -y
 
