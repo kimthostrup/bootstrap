@@ -17,7 +17,7 @@ sudo update-grub
 
 
 echo "Changing networking files"
-sudo cp /etc/network/interfaces{,.back$(date +%s)}
+sudo rm /etc/network/interfaces
 sudo wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/kimthostrup/bootstrap/main/interfaces -P /etc/network/
 
 #LOGO="_ _ _            _____         _\           
