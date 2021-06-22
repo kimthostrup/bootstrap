@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#MOTD_LOC=/etc/motd
-
 sudo apt update
 sudo apt upgrade -y
 
@@ -25,23 +23,14 @@ echo "Changing networking files"
 sudo rm /etc/network/interfaces
 sudo wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/kimthostrup/bootstrap/main/interfaces -P /etc/network/
 
-LOGO="_ _ _            _____         _\           
-| | | |___ ___   |_   _|___ ___| |_ ___ ___\ 
-| | | | .'|   |    | | | -_|_ -|  _| -_|  _|\
-|_____|__,|_|_|    |_| |___|___|_| |___|_|\  
-                                            
+ip_address=`ip -4 addr | grep -E 'eth|ens' | grep -oP '(?<=inet\s)\d+(\.\d+){3}'`
+printf "\n" >> /etc/issue
+echo "${c4}${c5}  _ _ _            _____         _            " > /etc/issue
+echo "${c4}${c5} | | | |___ ___   |_   _|___ ___| |_ ___ ___  " >> /etc/issue
+echo "${c4}${c5} | | | | .'|   |    | | | -_|_ -|  _| -_|  _| " >> /etc/issue
+echo "${c4}${c5} |_____|__,|_|_|    |_| |___|___|_| |___|_| " >> /etc/issue
+printf "\n" >> /etc/issue
 
-══════════════════════════════════════════════════\
-TYPE: $1\
-OS: $(lsb_release -d | cut -f2-)\
-IP: $(hostname -I)\
-INIT: $(date +"%Y-%m-%dT%H:%M:%SZ")\
-══════════════════════════════════════════════════\
-Notice: This server is for authorized use only.\
-By continuing, you agree to the Security policy.\
-══════════════════════════════════════════════════"
-
-#sudo echo $LOGO > $MOTD_LOC
 
 echo "Rebooting....."
 sudo shutdown -r now
