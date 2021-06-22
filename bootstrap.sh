@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo apt update
-sudp apt upgrade -y
+sudo apt upgrade -y
 
 echo "adding wan-admin to sudoers file"
 sudo cp /etc/sudoers{,.back$(date +%s)}
