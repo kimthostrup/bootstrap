@@ -42,7 +42,9 @@ echo "${c4}${c5} | | | | .'|   |    | | | -_|_ -|  _| -_|  _| " >> /etc/issue
 echo "${c4}${c5} |_____|__,|_|_|    |_| |___|___|_| |___|_| " >> /etc/issue
 printf "\n" >> /etc/issue
 printf "Access the management interface on:\n" >> /etc/issue
-ifconfig eth0 | awk '/inet addr/ {print $2}' | cut -f2 -d: >> /etc/issue
+#ifconfig eth0 | awk '/inet addr/ {print $2}' | cut -f2 -d: >> /etc/issue
+IP=$(/sbin/ifconfig eth0 | grep inet | head -1 | awk {'print $2'}) ; echo "$IP" > /etc/issue
+
 EOF
 
 chmod +x /etc/rc.local
