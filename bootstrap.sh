@@ -32,6 +32,7 @@ echo "${c4}${c5} | | | | .'|   |    | | | -_|_ -|  _| -_|  _| " >> /etc/issue
 echo "${c4}${c5} |_____|__,|_|_|    |_| |___|___|_| |___|_| " >> /etc/issue
 printf "\n" >> /etc/issue
 
+ifconfig eth0 | awk '/inet addr/ {print $2}' | cut -f2 -d: >> /etc/issue
 
 echo "Rebooting....."
 sudo shutdown -r now
