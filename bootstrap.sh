@@ -16,12 +16,15 @@ mv /etc/default/grub /etc/default/grub.org
 wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/kimthostrup/bootstrap/main/grub -P /etc/default/
 update-grub
 
-
-rm -rf /etc/update-motd.d/95-hwe-eol
+rm -rf /etc/update-motd.d/10-help-text
+rm -rf /etc/update-motd.d/50-motd-news
+rm -rf /etc/update-motd.d/50-landscape-sysinfo
 rm -rf /etc/update-motd.d/88-esm-announce
 rm -rf /etc/update-motd.d/91-contract-ua-esm-status
 rm -rf /etc/update-motd.d/91-release-upgrade
-rm -rf /etc/update-motd.d/50-motd-news
+rm -rf /etc/update-motd.d/92-unattended-upgrades
+rm -rf /etc/update-motd.d/95-hwe-eol
+rm -rf /etc/update-motd.d/97-overlayroot
 
 #Changing networking files
 rm /etc/network/interfaces
