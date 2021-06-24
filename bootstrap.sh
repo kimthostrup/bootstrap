@@ -37,14 +37,14 @@ true  > /etc/issue
 cat << EOF > /etc/rc.local
 #!/bin/sh -e
 # rc.local
-# Create a small logo
-printf "\n" >> /etc/issue
-echo "${c4}${c5}  _ _ _            _____         _            " > /etc/issue
-echo "${c4}${c5} | | | |___ ___   |_   _|___ ___| |_ ___ ___  " >> /etc/issue
-echo "${c4}${c5} | | | | .'|   |    | | | -_|_ -|  _| -_|  _| " >> /etc/issue
-echo "${c4}${c5} |_____|__,|_|_|    |_| |___|___|_| |___|_| " >> /etc/issue
+# Create a welcome message
 echo " " >> /etc/issue
-printf "1 Access the management interface using a browser on http://\\4{eth0}" >> /etc/issue
+echo "  _ _ _            _____         _            " > /etc/issue
+echo " | | | |___ ___   |_   _|___ ___| |_ ___ ___  " >> /etc/issue
+echo " | | | | .'|   |    | | | -_|_ -|  _| -_|  _| " >> /etc/issue
+echo " |_____|__,|_|_|    |_| |___|___|_| |___|_| " >> /etc/issue
+echo " " >> /etc/issue
+echo "Access the management interface using a browser on http://\\\4{eth0}" >> /etc/issue
 echo " " >> /etc/issue
 EOF\
 
