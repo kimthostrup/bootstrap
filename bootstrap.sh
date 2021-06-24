@@ -9,13 +9,14 @@ apt upgrade -y
 # adding wan-admin to sudoers file
 cp /etc/sudoers{,.back$(date +%s)}
 echo "wan-admin ALL=(ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers
+
 #Disabling netplan and changing interface names
 apt install ifupdown net-tools
-
 mv /etc/default/grub /etc/default/grub.org
 wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/kimthostrup/bootstrap/main/grub -P /etc/default/
 update-grub
 
+# Remove all the spam from login page
 rm -rf /etc/update-motd.d/10-help-text
 rm -rf /etc/update-motd.d/50-motd-news
 rm -rf /etc/update-motd.d/50-landscape-sysinfo
@@ -30,6 +31,7 @@ rm -rf /etc/update-motd.d/97-overlayroot
 rm /etc/network/interfaces
 wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/kimthostrup/bootstrap/main/interfaces -P /etc/network/
 
+#Clear our the default issues file
 chmod a+w /etc/issue
 true  > /etc/issue
 
@@ -53,4 +55,3 @@ chmod +x /etc/rc.local
 shutdown -r now
 
 exit 0
-
