@@ -43,9 +43,9 @@ echo "${c4}${c5}  _ _ _            _____         _            " > /etc/issue
 echo "${c4}${c5} | | | |___ ___   |_   _|___ ___| |_ ___ ___  " >> /etc/issue
 echo "${c4}${c5} | | | | .'|   |    | | | -_|_ -|  _| -_|  _| " >> /etc/issue
 echo "${c4}${c5} |_____|__,|_|_|    |_| |___|___|_| |___|_| " >> /etc/issue
-printf "\n" >> /etc/issue
-printf "Access the management interface using a browser on http://\\\4{eth0}" >> /etc/issue
-printf "\n" >> /etc/issue
+echo " " >> /etc/issue
+echo "Access the management interface using a browser on http://\\\4{eth0}" >> /etc/issue
+echo " " >> /etc/issue
 EOF\
 
 chmod +x /etc/rc.local
