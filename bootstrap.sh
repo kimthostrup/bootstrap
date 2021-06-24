@@ -52,6 +52,9 @@ EOF\
 
 chmod +x /etc/rc.local
 
+#Install the nessesary python dependencies
+apt install python3-pip
+
 shutdown -r now
 
 exit 0
