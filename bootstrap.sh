@@ -64,7 +64,6 @@ mkdir /var/wan-tester
 cd /var/wan-tester
 git reset --hard
 #echo "Doing a git pull"
-git pull https://f418c183a134bb77ec48eac7942960466cc38300:x-oauth-basic@github.com/kimthostrup/wan-tester.git
 
 #echo "Setting ownership and permission"
 sudo chown -R wan-admin:staff /var/wan-tester
