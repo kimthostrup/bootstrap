@@ -64,6 +64,19 @@ mkdir /var/wan-tester
 cd /var/wan-tester
 git reset --hard
 #echo "Doing a git pull"
+##################### INSERT SECRET GIT ################################
+
+# Configure DNS
+unlink /etc/resolv.conf
+touch /etc/resolv.conf
+echo nameserver 8.8.8.8 >> /etc/resolv.conf
+
+dpkg -P cloud-init
+rm -fr /etc/cloud/
+systemctl disable --now systemd-resolved
+
+# Enable ipv4 routing 
+echo net.ipv4.ip_forward=1 >> /etc/sysctl.conf
 
 #echo "Setting ownership and permission"
 sudo chown -R wan-admin:staff /var/wan-tester
