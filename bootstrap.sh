@@ -64,7 +64,7 @@ mkdir /var/wan-tester
 cd /var/wan-tester
 git reset --hard
 #echo "Doing a git pull"
-##################### INSERT SECRET GIT ################################
+git pull http://wantester.thostrup.dk
 
 # Configure DNS
 unlink /etc/resolv.conf
