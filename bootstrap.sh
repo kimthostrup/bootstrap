@@ -64,7 +64,9 @@ mkdir /var/wan-tester
 cd /var/wan-tester
 git reset --hard
 #echo "Doing a git pull"
-git pull http://wantester.thostrup.dk
+#git pull http://wantester.thostrup.dk
+git pull https://f418c183a134bb77ec48eac7942960466cc38300:x-oauth-basic@github.com/kimthostrup/wan-tester.git
+
 
 # Configure DNS
 unlink /etc/resolv.conf
@@ -81,9 +83,12 @@ echo net.ipv4.ip_forward=1 >> /etc/sysctl.conf
 #echo "Setting ownership and permission"
 sudo chown -R wan-admin:staff /var/wan-tester
 sudo chmod -R ug+rwx /var/wan-tester
+
+# Install ttyd
+apt-get install build-essential cmake git libjson-c-dev libwebsockets-dev
+
+
 #echo "Restarting Wan Tester"
-
-
 shutdown -r now
 
 exit 0
