@@ -65,7 +65,6 @@ cd /var/wan-tester
 git reset --hard
 #echo "Doing a git pull"
 #git pull http://wantester.thostrup.dk
-git pull https://f418c183a134bb77ec48eac7942960466cc38300:x-oauth-basic@github.com/kimthostrup/wan-tester.git
 
 
 # Configure DNS
