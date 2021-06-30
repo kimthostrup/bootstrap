@@ -48,8 +48,7 @@ rm -rf /etc/issue
 wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/kimthostrup/bootstrap/main/interfaces -P /etc/
 
 #Install the nessesary python dependencies
-apt install python3-pip -y
-apt install nginx -y
+apt install nginx python3-pip -y
 pip3 install -U Flask
 pip3 install -U netifaces
 pip3 install -U psutil
