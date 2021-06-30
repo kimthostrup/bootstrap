@@ -46,6 +46,7 @@ git clone https://github.com/tsl0922/ttyd.git
 cd ttyd && mkdir build && cd build
 cmake ..
 make && sudo make install
+cd
 
 #Changing the issues file
 rm -rf /etc/issue
