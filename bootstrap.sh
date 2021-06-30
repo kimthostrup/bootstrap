@@ -34,7 +34,7 @@ wget --no-check-certificate --content-disposition https://raw.githubusercontent.
 #Clear our the default issues file
 rm -rf /etc/issue
 #Download the issues file
-wget --no-check-certificate --content-disposition   -P /etc/
+wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/kimthostrup/bootstrap/main/interfaces -P /etc/
 
 #Install the nessesary python dependencies
 apt install python3-pip -y
