@@ -50,13 +50,15 @@ cd
 
 #Changing the issues file
 rm -rf /etc/issue
-wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/kimthostrup/bootstrap/main/interfaces -P /etc/
+wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/kimthostrup/bootstrap/main/issues -P /etc/
 
 #Install the nessesary python dependencies
 apt install nginx python3-pip -y
 pip3 install -U Flask
 pip3 install -U netifaces
 pip3 install -U psutil
+
+wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/kimthostrup/bootstrap/main/wan-tester -P /etc/nginx/sites-enabled/
 
 # Pull the primary source
 mkdir /var/wan-tester
