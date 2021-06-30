@@ -68,7 +68,7 @@ sudo chmod -R ug+rwx /var/wan-tester
 #echo "Doing a git pull"
 #git pull http://wantester.thostrup.dk
 #git reset --hard
-git clone https://kimthostrup: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@github.com/kimthostrup/wan-tester.git
+git clone https://kimthostrup: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@github.com/kimthostrup/wan-tester.git
 
 #Download the service file
 wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/kimthostrup/bootstrap/main/wan-tester.service -P /etc/systemd/system/
