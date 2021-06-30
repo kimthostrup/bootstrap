@@ -31,6 +31,15 @@ rm -rf /etc/update-motd.d/97-overlayroot
 rm /etc/network/interfaces
 wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/kimthostrup/bootstrap/main/interfaces -P /etc/network/
 
+# Configure DNS
+unlink /etc/resolv.conf
+touch /etc/resolv.conf
+echo nameserver 8.8.8.8 >> /etc/resolv.conf
+
+dpkg -P cloud-init
+rm -fr /etc/cloud/
+systemctl disable --now systemd-resolved
+
 # Install ttyd
 apt-get install build-essential cmake git libjson-c-dev libwebsockets-dev
 
@@ -45,35 +54,27 @@ pip3 install -U Flask
 pip3 install -U netifaces
 pip3 install -U psutil
 
+# Pull the primary source
+mkdir /var/wan-tester
+cd /var/wan-tester
+#Setting ownership and permission
+sudo chown -R wan-admin:staff /var/wan-tester
+sudo chmod -R ug+rwx /var/wan-tester
+
+#echo "Doing a git pull"
+#git pull http://wantester.thostrup.dk
+git reset --hard
+git pull https://f418c183a134bb77ec48eac7942960466cc38300:x-oauth-basic@github.com/kimthostrup/wan-tester.git
+
 #Download the service file
 wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/kimthostrup/bootstrap/main/wan-tester.service -P /etc/systemd/system/
 sudo systemctl enable wan-tester
 sudo systemctl start wan-tester
 
-# Pull the primary source
-mkdir /var/wan-tester
-cd /var/wan-tester
-git reset --hard
-#echo "Doing a git pull"
-#git pull http://wantester.thostrup.dk
-
-# Configure DNS
-unlink /etc/resolv.conf
-touch /etc/resolv.conf
-echo nameserver 8.8.8.8 >> /etc/resolv.conf
-
-dpkg -P cloud-init
-rm -fr /etc/cloud/
-systemctl disable --now systemd-resolved
-
 # Enable ipv4 routing 
 echo net.ipv4.ip_forward=1 >> /etc/sysctl.conf
 
-#echo "Setting ownership and permission"
-sudo chown -R wan-admin:staff /var/wan-tester
-sudo chmod -R ug+rwx /var/wan-tester
-
 #echo "Restarting Wan Tester"
-shutdown -r now
+reboot
 
 exit 0
