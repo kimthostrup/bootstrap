@@ -32,25 +32,9 @@ rm /etc/network/interfaces
 wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/kimthostrup/bootstrap/main/interfaces -P /etc/network/
 
 #Clear our the default issues file
-chmod a+w /etc/issue
-true  > /etc/issue
-
-#Create a rc.local to add ip to 
-cat << EOF > /etc/rc.local
-#!/bin/sh -e
-# rc.local
-# Create a welcome message
-echo " " >> /etc/issue
-echo "  _ _ _            _____         _            " > /etc/issue
-echo " | | | |___ ___   |_   _|___ ___| |_ ___ ___  " >> /etc/issue
-echo " | | | | .'|   |    | | | -_|_ -|  _| -_|  _| " >> /etc/issue
-echo " |_____|__,|_|_|    |_| |___|___|_| |___|_| " >> /etc/issue
-echo " " >> /etc/issue
-echo "Access the management interface using a browser on http://\\\4{eth0}" >> /etc/issue
-echo " " >> /etc/issue
-EOF\
-
-chmod +x /etc/rc.local
+rm -rf /etc/issue
+#Download the issues file
+wget --no-check-certificate --content-disposition   -P /etc/
 
 #Install the nessesary python dependencies
 apt install python3-pip -y
