@@ -31,9 +31,11 @@ rm -rf /etc/update-motd.d/97-overlayroot
 rm /etc/network/interfaces
 wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/kimthostrup/bootstrap/main/interfaces -P /etc/network/
 
-#Clear our the default issues file
+# Install ttyd
+apt-get install build-essential cmake git libjson-c-dev libwebsockets-dev
+
+#Changing the issues file
 rm -rf /etc/issue
-#Download the issues file
 wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/kimthostrup/bootstrap/main/interfaces -P /etc/
 
 #Install the nessesary python dependencies
@@ -43,14 +45,17 @@ pip3 install -U Flask
 pip3 install -U netifaces
 pip3 install -U psutil
 
+#Download the service file
+wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/kimthostrup/bootstrap/main/wan-tester.service -P /etc/systemd/system/
+sudo systemctl enable wan-tester
+sudo systemctl start wan-tester
+
 # Pull the primary source
 mkdir /var/wan-tester
 cd /var/wan-tester
 git reset --hard
 #echo "Doing a git pull"
 #git pull http://wantester.thostrup.dk
-
-
 
 # Configure DNS
 unlink /etc/resolv.conf
@@ -67,10 +72,6 @@ echo net.ipv4.ip_forward=1 >> /etc/sysctl.conf
 #echo "Setting ownership and permission"
 sudo chown -R wan-admin:staff /var/wan-tester
 sudo chmod -R ug+rwx /var/wan-tester
-
-# Install ttyd
-apt-get install build-essential cmake git libjson-c-dev libwebsockets-dev
-
 
 #echo "Restarting Wan Tester"
 shutdown -r now
