@@ -40,6 +40,9 @@ dpkg -P cloud-init
 rm -fr /etc/cloud/
 systemctl disable --now systemd-resolved
 
+# Enable ipv4 routing 
+echo net.ipv4.ip_forward=1 >> /etc/sysctl.conf
+
 # Install ttyd
 apt-get install build-essential cmake git libjson-c-dev libwebsockets-dev -y
 git clone https://github.com/tsl0922/ttyd.git
@@ -49,7 +52,7 @@ make && sudo make install
 cd
 
 #Changing the issues file
-rm -rf /etc/issue
+rm -rf /etc/issue*
 wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/kimthostrup/bootstrap/main/issues -P /etc/
 
 #Install the nessesary python dependencies
@@ -63,22 +66,18 @@ wget --no-check-certificate --content-disposition https://raw.githubusercontent.
 # Pull the primary source
 mkdir /var/wan-tester
 cd /var/wan-tester
+
+#echo "Doing a git pull"
+git clone https://kimthostrup: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@github.com/kimthostrup/wan-tester.git
+
 #Setting ownership and permission
 sudo chown -R wan-admin:staff /var/wan-tester
 sudo chmod -R ug+rwx /var/wan-tester
-
-#echo "Doing a git pull"
-#git pull http://wantester.thostrup.dk
-#git reset --hard
-git clone https://kimthostrup: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@github.com/kimthostrup/wan-tester.git
 
 #Download the service file
 wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/kimthostrup/bootstrap/main/wan-tester.service -P /etc/systemd/system/
 sudo systemctl enable wan-tester
 sudo systemctl start wan-tester
-
-# Enable ipv4 routing 
-echo net.ipv4.ip_forward=1 >> /etc/sysctl.conf
 
 #echo "Restarting Wan Tester"
 reboot
