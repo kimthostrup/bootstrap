@@ -67,9 +67,8 @@ wget --no-check-certificate --content-disposition https://raw.githubusercontent.
 # Pull the primary source
 cd /var/
 #echo "Doing a git pull"
-git config --global credential.helper store
-git clone https://kimthostrup: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@github.com/kimthostrup/wan-tester.git
-
+#git config --global credential.helper store
+git clone https://kimthostrup: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@github.com/kimthostrup/wan-tester.git
 
 #Setting ownership and permission
 sudo chown -R wan-admin:staff /var/wan-tester
