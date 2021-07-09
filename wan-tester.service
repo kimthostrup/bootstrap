@@ -8,7 +8,7 @@ Group=staff
 PIDFile = /var/wan-tester/wan-tester.pid
 WorkingDirectory=/var/wan-tester
 #Environment="PATH=/var/wan-tester"
-ExecStart=/usr/bin/gunicorn3 -b 127.0.0.1:6000 app:app --pid /var/wan-tester/wan-tester.pid
+ExecStart=/usr/local/bin/gunicorn -b 127.0.0.1:6000 app:app --pid /var/wan-tester/wan-tester.pid
 ExecReload=/bin/kill -s HUP $MAINPID
 ExecStop=/bin/kill -s TERM $MAINPID
 #Restart=always
