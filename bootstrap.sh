@@ -59,18 +59,16 @@ wget --no-check-certificate --content-disposition https://raw.githubusercontent.
 apt install nginx python3-pip -y
 
 echo "Installing python prerequisites"
-pip3 install -U Flask
-pip3 install -U netifaces
-pip3 install -U psutil
+pip3 install -U Flask netifaces psutil
 
 wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/kimthostrup/bootstrap/main/wan-tester -P /etc/nginx/sites-enabled/
 
 # Pull the primary source
-mkdir /var/wan-tester
-cd /var/wan-tester
-
+cd /var/
 #echo "Doing a git pull"
-git clone https://kimthostrup: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@github.com/kimthostrup/wan-tester.git
+git config --global credential.helper store
+git clone https://kimthostrup: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@github.com/kimthostrup/wan-tester.git
+
 
 #Setting ownership and permission
 sudo chown -R wan-admin:staff /var/wan-tester
