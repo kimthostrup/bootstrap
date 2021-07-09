@@ -54,6 +54,7 @@ cd
 #Changing the issues file
 rm -rf /etc/issue*
 wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/kimthostrup/bootstrap/main/issues -P /etc/
+chown root:root /etc/issue*
 
 #Install the nessesary python dependencies
 apt install nginx python3-pip -y
