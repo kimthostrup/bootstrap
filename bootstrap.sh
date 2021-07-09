@@ -57,6 +57,8 @@ wget --no-check-certificate --content-disposition https://raw.githubusercontent.
 
 #Install the nessesary python dependencies
 apt install nginx python3-pip -y
+
+echo "Installing python prerequisites"
 pip3 install -U Flask
 pip3 install -U netifaces
 pip3 install -U psutil
