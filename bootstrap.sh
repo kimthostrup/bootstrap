@@ -71,13 +71,13 @@ cd /var/
 git clone https://kimthostrup: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@github.com/kimthostrup/wan-tester.git
 
 #Setting ownership and permission
-sudo chown -R wan-admin:staff /var/wan-tester
-sudo chmod -R ug+rwx /var/wan-tester
+chown -R wan-admin:staff /var/wan-tester
+chmod -R ug+rwx /var/wan-tester
 
 #Download the service file
 wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/kimthostrup/bootstrap/main/wan-tester.service -P /etc/systemd/system/
-sudo systemctl enable wan-tester
-sudo systemctl start wan-tester
+systemctl enable wan-tester
+systemctl start wan-tester
 
 #echo "Restarting Wan Tester"
 reboot
