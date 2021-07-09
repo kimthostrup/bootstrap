@@ -60,7 +60,7 @@ chown root:root /etc/issue*
 apt install nginx python3-pip -y
 
 echo "Installing python prerequisites"
-pip3 install -U Flask netifaces psutil
+pip3 install -U Flask netifaces psutil gunicorn
 
 wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/kimthostrup/bootstrap/main/wan-tester -P /etc/nginx/sites-enabled/
 
