@@ -54,6 +54,7 @@ cd
 #Changing the issues file
 rm -rf /etc/issue*
 wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/kimthostrup/bootstrap/main/issues -P /etc/
+cp /etc/issues /etc/issues.net
 chown root:root /etc/issue*
 
 #Install the nessesary python dependencies
