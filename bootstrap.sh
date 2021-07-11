@@ -58,7 +58,7 @@ cp /etc/issues /etc/issues.net
 chown root:root /etc/issue*
 
 #Install the nessesary python dependencies
-apt install nginx python3-pip -y
+apt install nginx python3-pip gunicorn -y
 
 echo "Installing python prerequisites"
 pip3 install -U Flask netifaces psutil gunicorn sh
