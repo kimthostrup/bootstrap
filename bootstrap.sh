@@ -61,15 +61,17 @@ chown root:root /etc/issue*
 apt install nginx python3-pip gunicorn -y
 
 echo "Installing python prerequisites"
-pip3 install -U Flask netifaces psutil gunicorn sh
+#pip3 install -U Flask netifaces psutil sh
+sudo -H -u wan-admin pip3 install -U Flask netifaces psutil sh
 
+# Add the nginx site config
 wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/kimthostrup/bootstrap/main/wan-tester -P /etc/nginx/sites-enabled/
 
 # Pull the primary source
 cd /var/
 #echo "Doing a git pull"
 #git config --global credential.helper store
-git clone https://kimthostrup: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@github.com/kimthostrup/wan-tester.git
+git clone https://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:x-oauth-basic@github.com/kimthostrup/wan-tester.git
 
 #Setting ownership and permission
 chown -R wan-admin:staff /var/wan-tester
